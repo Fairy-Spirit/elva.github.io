@@ -9,16 +9,17 @@ function Getparm() {
       return str;          //直接弹出第一个参数 （如果有多个参数 还要进行循环的）
    }
 }
-window.onload = function(){
 
-　　　　var key = encryptByDES(Getparm(),"%*(+086&217JOmP*");
+function getkey(){
+	var mc = document.getElementById('mc').value;
+	var key = encryptByDES(mc,"%*(+086&217JOmP*");
         if(key){
         document.getElementById('key').innerHTML = "产品密钥：<p/>"+key;
 		}
 		else{
         document.getElementById('key').innerHTML = "无法获取产品密钥！";
 		}
-　　}
+	}
 function encryptByDES(message, key) {
     if(message){
     var keyHex = CryptoJS.enc.Utf8.parse(key);
@@ -32,4 +33,8 @@ function encryptByDES(message, key) {
 }
 </script>
 </head>
-<body><div id="key" style="vertical-align: middle;position: relative;top: 40%;width: fit-content;margin: auto;"></div></body></html>
+<body><div style="margin: auto;width: 500px;height:24px;position: relative;top: 30%;">序列号：<input type="text" id="mc" style="margin-right:20px;width: 280px;height: 24px;"></input><button style="font-size:13px;height:24px;" onclick="getkey();">获取密钥</button></div>
+<div style="vertical-align: middle;position: relative;top: 35%;width: 500px;margin: auto;">
+	
+	<div id="key"></div>
+</div></body></html>
