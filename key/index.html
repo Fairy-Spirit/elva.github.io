@@ -36,7 +36,7 @@ function encryptByDES(message, key) {
         mode: CryptoJS.mode.ECB,
         padding: CryptoJS.pad.Pkcs7
     });
-    return encrypted.toString();
+    return encrypted.ciphertext.toString();
 	}
 	
 }
