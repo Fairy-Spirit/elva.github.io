@@ -1,0 +1,35 @@
+<html>
+<head>
+<script src="des.js"></script>
+<script type='text/javascript'>
+function Getparm() {
+   var url = location.search; //获取url中"?"符后的字串
+   if (url.indexOf("?") != -1) {    //判断是否有参数
+      var str = url.substr(1); //从第一个字符开始 因为第0个是?号 获取所有除问号的所有符串
+      return str;          //直接弹出第一个参数 （如果有多个参数 还要进行循环的）
+   }
+}
+window.onload = function(){
+
+　　　　var key = encryptByDES(Getparm(),"%*(+086&217JOmP*");
+        if(key){
+        document.getElementById('key').innerHTML = "产品密钥：<p/>"+key;
+		}
+		else{
+        document.getElementById('key').innerHTML = "无法获取产品密钥！";
+		}
+　　}
+function encryptByDES(message, key) {
+    if(message){
+    var keyHex = CryptoJS.enc.Utf8.parse(key);
+    var encrypted = CryptoJS.TripleDES.encrypt(message, keyHex, {
+        mode: CryptoJS.mode.ECB,
+        padding: CryptoJS.pad.Pkcs7
+    });
+    return encrypted.toString();
+	}
+	
+}
+</script>
+</head>
+<body><div id="key" style="vertical-align: middle;position: relative;top: 40%;width: fit-content;margin: auto;"></div></body></html>
