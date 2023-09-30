@@ -9,6 +9,15 @@ function Getparm() {
       return str;          //直接弹出第一个参数 （如果有多个参数 还要进行循环的）
    }
 }
+window.onload = function () {
+  var s = Getparm();
+    if(s)
+    {
+	    document.getElementById('mc').value = s;
+        getkey();
+	}
+  }
+
 
 function getkey(){
 	var mc = document.getElementById('mc').value;
