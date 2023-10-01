@@ -15,6 +15,8 @@ window.onload = function () {
     {
 	    document.getElementById('mc').value = s;
         getkey();
+		document.getElementById('input').style.display='none';
+		document.getElementById('res').style.width='fit-content';
 	}
   }
 
@@ -36,14 +38,15 @@ function encryptByDES(message, key) {
         mode: CryptoJS.mode.ECB,
         padding: CryptoJS.pad.Pkcs7
     });
+
     return encrypted.ciphertext.toString();
 	}
 	
 }
 </script>
 </head>
-<body><div style="margin: auto;width: 500px;height:24px;position: relative;top: 30%;">序列号：<input type="text" id="mc" style="margin-right:20px;width: 280px;height: 24px;"></input><button style="font-size:13px;height:24px;" onclick="getkey();">获取密钥</button></div>
-<div style="vertical-align: middle;position: relative;top: 35%;width: 500px;margin: auto;">
+<body><div id="input" style="margin: auto;width: 500px;height:24px;position: relative;top: 30%;font-weight:100">序列号：<input type="text" id="mc" style="margin-right:20px;width: 280px;height: 24px;font-weight:100"></input><button style="font-size:13px;height:24px;font-weight:100" onclick="getkey();">获取密钥</button></div>
+<div id="res" style="vertical-align: middle;position: relative;top: 35%;width: 500px;margin: auto;">
 	
-	<div id="key"></div>
+	<div id="key" style="font-weight:100"></div>
 </div></body></html>
